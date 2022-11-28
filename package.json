@@ -2,7 +2,7 @@
     "name": "revealextfolder",
     "displayName": "Reveal Ext Folder",
     "description": "Quickly reveal ext folder/finder/explorer",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-RevealExtFolder",
     "engines": {
@@ -23,7 +23,7 @@
                 "RevealExtFolder.openAsProject": {
                     "type": "boolean",
                     "default": false,
-                    "description": "open ext directoy in vscode as a project instead in system finder/explorer"
+                    "description": "open ext directory in vscode as a project instead in system finder/explorer"
                 }
             }
         },
