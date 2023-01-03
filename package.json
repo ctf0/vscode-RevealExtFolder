@@ -2,7 +2,7 @@
     "name": "revealextfolder",
     "displayName": "Reveal Ext Folder",
     "description": "Quickly reveal ext folder/finder/explorer",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-RevealExtFolder",
     "engines": {
@@ -31,10 +31,7 @@
             {
                 "command": "extension.revealExtFolder",
                 "title": "Reveal in folder",
-                "icon": {
-                    "dark": "./icons/reveal.svg",
-                    "light": "./icons/reveal_light.svg"
-                }
+                "icon": "$(root-folder-opened)"
             }
         ],
         "menus": {
@@ -48,14 +45,17 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "vscode:prepublish": "npm run esbuild-base -- --pure:console.log --minify",
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+        "esbuild": "npm run esbuild-base -- --sourcemap",
+        "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+        "watch": "npm run esbuild"
     },
     "devDependencies": {
-        "@types/node": "^18.11.9",
+        "@types/node": "^18.15.11",
         "@types/vscode": "^1.68.0",
-        "typescript": "^4.8.4"
+        "typescript": "^5.0.4",
+        "esbuild": "^0.17.10"
     },
     "dependencies": {
         "open-file-explorer": "^1.0.2"
