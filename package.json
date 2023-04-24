@@ -2,7 +2,7 @@
     "name": "revealextfolder",
     "displayName": "Reveal Ext Folder",
     "description": "Quickly reveal ext folder/finder/explorer",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-RevealExtFolder",
     "engines": {
@@ -39,7 +39,7 @@
                 {
                     "command": "extension.revealExtFolder",
                     "group": "navigation",
-                    "when": "activeEditor == workbench.editor.extension"
+                    "when": "inExtensionEditor"
                 }
             ]
         }
