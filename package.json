@@ -2,7 +2,7 @@
     "name": "revealextfolder",
     "displayName": "Reveal Ext Folder",
     "description": "Quickly reveal ext folder/finder/explorer",
-    "version": "0.0.6",
+    "version": "1.0.0",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-RevealExtFolder",
     "engines": {
@@ -14,7 +14,7 @@
     "activationEvents": [
         "onStartupFinished"
     ],
-    "main": "./out/extension",
+    "main": "./out/main",
     "contributes": {
         "configuration": {
             "type": "object",
@@ -32,6 +32,10 @@
                 "command": "extension.revealExtFolder",
                 "title": "Reveal in folder",
                 "icon": "$(root-folder-opened)"
+            },
+            {
+                "command": "extension.openExtensionFolder",
+                "title": "Open Extension Folder"
             }
         ],
         "menus": {
@@ -40,6 +44,18 @@
                     "command": "extension.revealExtFolder",
                     "group": "navigation",
                     "when": "inExtensionEditor"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "extension.openExtensionFolder",
+                    "when": "false"
+                }
+            ],
+            "extension/context": [
+                {
+                    "command": "extension.openExtensionFolder",
+                    "group": "0_install"
                 }
             ]
         }

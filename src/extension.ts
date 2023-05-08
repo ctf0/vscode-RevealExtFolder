@@ -1,26 +1,21 @@
-'use strict'
-
-import * as vscode from 'vscode'
-const openExplorer = require('open-file-explorer');
+import openExplorer from 'open-file-explorer';
+import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-    let config = vscode.workspace.getConfiguration('RevealExtFolder')
+    const config = vscode.workspace.getConfiguration('RevealExtFolder');
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('extension.revealExtFolder', async () => {
-            let res = await vscode.window.showInputBox({
-                  placeHolder: 'Enter the extensionId ex."publisher.name"',
-            })
+        vscode.commands.registerCommand('extension.openExtensionFolder', async (extId: string) => await openExtFolder(extId, config)),
+        vscode.commands.registerCommand('extension.revealExtFolder', async (e) => await openExtFolder(e.path.replace('/extension', ''), config)),
+    );
+}
 
-            if (res) {
-                let p: any = vscode.extensions.getExtension(res)?.extensionUri.path;
+async function openExtFolder(extId: string, config: vscode.WorkspaceConfiguration) {
+    const p: any = vscode.extensions.getExtension(extId)?.extensionPath;
 
-                await config.openAsProject
-                    ? vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.parse(p))
-                    : openExplorer(p)
-            }
-        })
-    )
+    await config.openAsProject
+        ? vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.parse(p))
+        : openExplorer(p);
 }
 
 export function deactivate() {
