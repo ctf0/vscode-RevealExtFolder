@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
     const config = vscode.workspace.getConfiguration('RevealExtFolder');
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('extension.openExtensionFolder', async (extId: string) => await openExtFolder(extId, config)),
+        vscode.commands.registerCommand('extension.openExtFolder', async (extId: string) => await openExtFolder(extId, config)),
         vscode.commands.registerCommand('extension.revealExtFolder', async (e) => await openExtFolder(e.path.replace('/extension', ''), config)),
     );
 }
