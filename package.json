@@ -75,7 +75,7 @@
         "@types/node": "^22.13.1",
         "@types/vscode": "^1.85.0",
         "typescript": "^5.7.3",
-        "esbuild": "^0.25.0"
+        "esbuild": "^0.28.1"
     },
     "dependencies": {
         "open-file-explorer": "^1.0.2"
